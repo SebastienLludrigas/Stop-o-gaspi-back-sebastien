@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1>Product index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Expiration_date</th>
+                <th>Archived_date</th>
+                <th>Elaboration_date</th>
+                <th>Ingredients</th>
+                <th>Quantity</th>
+                <th>Nutritional_composition</th>
+                <th>Favorite</th>
+                <th>Archived</th>
+                <th>Expirated</th>
+                <th>Created_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.expirationDate ? product.expirationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ product.archivedDate ? product.archivedDate|date('Y-m-d') : '' }}</td>
+                <td>{{ product.elaborationDate ? product.elaborationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ product.ingredients }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.nutritionalComposition }}</td>
+                <td>{{ product.favorite ? 'Yes' : 'No' }}</td>
+                <td>{{ product.archived ? 'Yes' : 'No' }}</td>
+                <td>{{ product.expirated ? 'Yes' : 'No' }}</td>
+                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_new') }}">Create new</a>
+{% endblock %}

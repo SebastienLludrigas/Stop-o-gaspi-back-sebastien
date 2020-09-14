@@ -1,0 +1,18 @@
+#ea-index-User {
+    background-color: white;
+}
+
+.main-sidebar {
+    background-color: white;
+}
+
+.content-header,
+.content-header::before,
+.content-header::after {
+    background-color: white;
+}
+
+#header-logo {
+    width: 150px;
+    height: 100px;
+}
